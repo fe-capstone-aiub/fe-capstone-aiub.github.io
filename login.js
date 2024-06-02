@@ -27,7 +27,7 @@ var Login = function() {
       }
     });
 
-    xhr.open("POST", "http://127.0.0.1:5000/login");
+    xhr.open("POST", "https://callendar-app.onrender.com/login");
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.send(data);

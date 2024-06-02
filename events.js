@@ -21,7 +21,7 @@ function ShowCalendar() {
 
 function fetchEvents() {
   $.ajax({
-    url: 'http://127.0.0.1:5000/events',
+    url: 'https://callendar-app.onrender.com/events',
     method: 'GET',
     success: function(data) {
       events = data;

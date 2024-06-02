@@ -23,7 +23,7 @@ if(!(localStorage.username && localStorage.password)){
 
   function fetchEvents() {
     $.ajax({
-      url: 'http://127.0.0.1:5000/events',
+      url: 'https://callendar-app.onrender.com/events',
       method: 'GET',
       success: function(data) {
         events = data;
@@ -70,7 +70,7 @@ if(!(localStorage.username && localStorage.password)){
       }
     });
 
-    xhr.open("POST", "http://127.0.0.1:5000/events");
+    xhr.open("POST", "https://callendar-app.onrender.com/events");
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.send(objstr);
