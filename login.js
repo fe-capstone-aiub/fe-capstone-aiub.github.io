@@ -1,0 +1,34 @@
+var Login = function() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    var data = JSON.stringify({
+      "username": username,
+      "password": password
+    });
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function() {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+        // Save the credentials in local storage and redirect to the calendar page
+        if(JSON.parse(this.responseText).message == "Login successful")
+        {
+          localStorage.setItem('username', username);
+          localStorage.setItem('password', password);
+          window.location.href = 'index.html';
+        }
+        else
+        {
+          alert("Invalid username or password");
+        }
+      }
+    });
+
+    xhr.open("POST", "http://127.0.0.1:5000/login");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(data);
+  }
