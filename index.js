@@ -16,6 +16,17 @@ if(!(localStorage.username && localStorage.password)){
       events: function(info, successCallback, failureCallback) {
         successCallback(events);
       },
+      eventClick: function(info) {
+        console.log(info.event._def.publicId);
+        console.log(info.event._def.title);
+
+        // alert('Event: ' + info.event.title);
+        // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+        // alert('View: ' + info.view.type);
+    
+        // // change the border color just for fun
+        // info.el.style.borderColor = 'red';
+      }
     });
 
     calendar.render();
@@ -40,13 +51,14 @@ if(!(localStorage.username && localStorage.password)){
     var obj = {
       title: $("#eventName").val(),
       start: $("#fromDate").val(),
-      end: $("#toDate").val()
+      end: $("#fromDate").val(),
+      type: $("#type").val()
     };
     var objs = {
       title: $("#eventName").val(),
       start: $("#fromDate").val(),
-      end: $("#toDate").val(),
-      type: "default",
+      end: $("#fromDate").val(),//$("#toDate").val()
+      type: $("#type").val(),
       username: localStorage.username,
       password: localStorage.password
     };
@@ -81,3 +93,11 @@ if(!(localStorage.username && localStorage.password)){
     localStorage.clear();
     window.location.href = 'events.html';
   });
+  function getDistinctTypes(events) {
+    const types = events.map(event => event.type);
+    const distinctTypes = [...new Set(types)];
+    return distinctTypes;
+}
+function getEventsByType(type) {
+  return events.filter(event => event.type === type);
+}
