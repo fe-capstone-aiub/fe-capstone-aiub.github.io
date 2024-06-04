@@ -131,12 +131,12 @@ function updateTypeFilterDropdown() {
 $('#typeFilter').on('change', function() {
   var selectedType = $(this).val();
   if (selectedType === 'all') {
-    calendar.removeAllEvents(); // Remove existing events
+    calendar.removeAllEventSources();
     calendar.addEventSource(originalEvents); // Add filtered events
   } else {
     events = getEventsByType(selectedType);
     console.log(events);
-    calendar.removeAllEvents(); // Remove existing events
+    calendar.removeAllEventSources();
     calendar.addEventSource(events); // Add filtered events
   }
 });

@@ -69,15 +69,46 @@ distinctTypes.forEach(function(type) {
 });
 }
 
+
+function getDistinctTypes() {
+  const types = originalEvents.map(event => event.type);
+  const distinctTypes = [...new Set(types)];
+  return distinctTypes;
+}
+function getEventsByType(type) {
+return originalEvents.filter(event => event.type === type);
+}
+
+function updateTypeFilterDropdown() {
+var distinctTypes = getDistinctTypes();
+var typeFilterDropdown = $('#typeFilter');
+typeFilterDropdown.empty(); // Clear existing options
+
+// Add "All Types" option
+typeFilterDropdown.append($('<option>', {
+  value: 'all',
+  text: 'All Types'
+}));
+
+// Add options for each distinct type
+distinctTypes.forEach(function(type) {
+  typeFilterDropdown.append($('<option>', {
+    value: type,
+    text: type
+  }));
+});
+}
+
 // Event listener for type filter change
 $('#typeFilter').on('change', function() {
 var selectedType = $(this).val();
 if (selectedType === 'all') {
-  calendar.removeAllEvents(); // Remove existing events
+  calendar.removeAllEventSources();
   calendar.addEventSource(originalEvents); // Add filtered events
 } else {
   events = getEventsByType(selectedType);
-  calendar.removeAllEvents(); // Remove existing events
+  console.log(events);
+  calendar.removeAllEventSources();
   calendar.addEventSource(events); // Add filtered events
 }
 });
