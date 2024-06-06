@@ -17,12 +17,12 @@ function ShowCalendar() {
   calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     events: function (info, successCallback, failureCallback) {
-      console.log(events);
+      //console.log(events);
       successCallback(events);
     },
     eventClick: function (info) {
-      console.log(info.event._def.publicId);
-      console.log(info.event._def.title);
+      //console.log(info.event._def.publicId);
+      //console.log(info.event._def.title);
       if (crud == 'edit') {
         editEvent(info.event._def.publicId);
       }
@@ -137,7 +137,7 @@ $('#typeFilter').on('change', function () {
     calendar.addEventSource(originalEvents); // Add filtered events
   } else {
     events = getEventsByType(selectedType);
-    console.log(events);
+    //console.log(events);
     calendar.removeAllEventSources();
     calendar.addEventSource(events); // Add filtered events
   }
@@ -177,17 +177,17 @@ $('#editMode').on('click', function () {
 });
 function deleteEvent(id) {
   var ev=getEventById(id);
-  console.log(ev[0]);
+  //console.log(ev[0]);
    if(confirm("Are you sure you want to delete "+ev[0].title+"?")){
      
-  console.log(id);
+  //console.log(id);
   data = {
     id: id,
     username: localStorage.username,
     password: localStorage.password
   };
 var datastr = JSON.stringify(data);
-  console.log(data);
+  //console.log(data);
 
   var xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
@@ -221,7 +221,7 @@ function getEventById(id) {
 }
 function editEvent(id) {
   var eventsn=originalEvents.find(event => event.id === parseInt(id));
-  console.log(eventsn);
+  //console.log(eventsn);
   $("#eventName").val(eventsn.title);
   $("#fromDate").val(eventsn.start);
   $("#type").val(eventsn.type);
