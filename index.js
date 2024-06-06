@@ -1,5 +1,5 @@
 if (!(localStorage.username && localStorage.password)) {
-  window.location.href = 'events.html';
+  window.location.href = 'events';
 }
 var crud = '';
 var evId = -1;
@@ -82,7 +82,7 @@ function addEventFunc() {
       } else if (JSON.parse(this.responseText).message == "Invalid admin credentials") {
         alert("Invalid admin credentials");
         localStorage.clear();
-        window.location.href = 'events.html';
+        window.location.href = 'events';
       }
 
       calendar.refetchEvents();
@@ -98,7 +98,7 @@ function addEventFunc() {
 // Logout function
 document.getElementById('logoutBtn').addEventListener('click', function () {
   localStorage.clear();
-  window.location.href = 'events.html';
+  window.location.href = 'events';
 });
 function getDistinctTypes() {
   const types = originalEvents.map(event => event.type);
@@ -202,7 +202,7 @@ var datastr = JSON.stringify(data);
       } else if (JSON.parse(this.responseText).message == "Invalid admin credentials") {
         alert("Invalid admin credentials");
         localStorage.clear();
-        window.location.href = 'events.html';
+        window.location.href = 'events';
       }
 
       calendar.refetchEvents();
@@ -259,7 +259,7 @@ function updateEvent(id) {
       } else if (JSON.parse(this.responseText).message == "Invalid admin credentials") {
         alert("Invalid admin credentials");
         localStorage.clear();
-        window.location.href = 'events.html';
+        window.location.href = 'events';
       }
 
       calendar.refetchEvents();

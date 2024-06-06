@@ -1,5 +1,5 @@
     if(localStorage.username && localStorage.password){
-      window.location.href = 'index.html';
+      window.location.href = 'index';
     }
     
   var originalEvents = []; // Define original events array globally
