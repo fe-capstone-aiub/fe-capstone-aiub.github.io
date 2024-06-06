@@ -176,6 +176,9 @@ $('#editMode').on('click', function () {
   }
 });
 function deleteEvent(id) {
+  var ev=getEventById(id);
+   if(confirm("Are you sure you want to delete "+ev.title+"?")){
+     
   console.log(id);
   data = {
     id: id,
@@ -210,6 +213,8 @@ var datastr = JSON.stringify(data);
 
   xhr.send(datastr);
 }
+
+}
 function getEventById(id) {
   return originalEvents.find(event => event.id === id);
 }
@@ -225,6 +230,9 @@ function editEvent(id) {
 
 }
 function removeEventById(id) {
+  return events.filter(event => event.id !== id);
+}
+function getEventById(id) {
   return events.filter(event => event.id !== id);
 }
 function updateEvent(id) {
