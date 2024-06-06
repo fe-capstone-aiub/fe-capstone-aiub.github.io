@@ -10,7 +10,7 @@
 <div class="container">
   <!-- Navigation bar with logout button -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">FE Capstone Committee</a>
+    <a class="navbar-brand" href="#">FE Capstone Committee | AIUB</a>
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -44,12 +44,6 @@
         </div>
       </div>
       
-      <!-- <div class="col-md-4">
-        <div class="form-group">
-          <label for="toDate">To:</label>
-          <input type="date" class="form-control" id="toDate">
-        </div>
-      </div> -->
       <div class="col-md-6">
         <div class="form-group">
           <label for="type">Type:</label>
@@ -58,25 +52,31 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-primary" id="addEvent">Add Event</button>
+    <button type="button" onclick="addEventFunc()" class="btn btn-primary" id="addEvent">Add Event</button>
+    
+    
   </form>
   
   <hr>
-
+  
+  <button type="button" class="btn btn-primary" id="deleteMode">Delete Mode</button>
+  <button type="button" class="btn btn-primary" id="editMode">Edit Mode</button>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="typeFilter">Filter By Type:</label>
+      <select class="form-control" id="typeFilter">
+        <option value="">All</option>
+      </select>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-12">
       <div id="calendar"></div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6">
-    <label for="typef">Filter By Type:</label>
-    <input type="text" class="form-control" placeholder="Enter type" id="typef">
-  
-  </div>
-</div>
+ 
 </div>
 
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
