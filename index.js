@@ -177,7 +177,8 @@ $('#editMode').on('click', function () {
 });
 function deleteEvent(id) {
   var ev=getEventById(id);
-   if(confirm("Are you sure you want to delete "+ev.title+"?")){
+  console.log(ev[0]);
+   if(confirm("Are you sure you want to delete "+ev[0].title+"?")){
      
   console.log(id);
   data = {
