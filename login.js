@@ -1,5 +1,5 @@
 if(localStorage.username && localStorage.password){
-  window.location.href = 'index';
+  window.location.href = '/';
 }
 var Login = function() {
     var username = document.getElementById('username').value;
@@ -21,7 +21,7 @@ var Login = function() {
         {
           localStorage.setItem('username', username);
           localStorage.setItem('password', password);
-          window.location.href = 'index';
+          window.location.href = '/';
         }
         else
         {
