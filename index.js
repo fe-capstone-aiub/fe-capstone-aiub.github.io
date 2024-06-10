@@ -21,13 +21,13 @@ function ShowCalendar() {
       successCallback(events);
     },
     eventClick: function (info) {
-      //console.log(info.event._def.publicId);
+      console.log(info.event._def.publicId);
       //console.log(info.event._def.title);
       if (crud == 'edit') {
         editEvent(info.event._def.publicId);
       }
       else if (crud == 'delete') {
-        deleteEvent(info.event._def.publicId);
+        deleteEvent(parseInt(info.event._def.publicId));
       }
 
       // alert('Event: ' + info.event.title);
@@ -176,9 +176,10 @@ $('#editMode').on('click', function () {
   }
 });
 function deleteEvent(id) {
+  console.log(id);
   var ev=getEventById(id);
-  //console.log(ev[0]);
-   if(confirm("Are you sure you want to delete "+ev[0].title+"?")){
+  console.log(ev);
+   if(confirm("Are you sure you want to delete "+ev.title+"?")){
      
   //console.log(id);
   data = {
@@ -217,7 +218,7 @@ var datastr = JSON.stringify(data);
 
 }
 function getEventById(id) {
-  return originalEvents.find(event => event.id === id);
+  return originalEvents.find(ev => ev.id === id);
 }
 function editEvent(id) {
   var eventsn=originalEvents.find(event => event.id === parseInt(id));
@@ -233,9 +234,7 @@ function editEvent(id) {
 function removeEventById(id) {
   return events.filter(event => event.id !== id);
 }
-function getEventById(id) {
-  return events.filter(event => event.id !== id);
-}
+
 function updateEvent(id) {
   
   var objs = {
