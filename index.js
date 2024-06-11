@@ -17,30 +17,29 @@ function ShowCalendar() {
   calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     events: function (info, successCallback, failureCallback) {
-      //console.log(events);
       successCallback(events);
     },
     eventClick: function (info) {
-      console.log(info.event._def.publicId);
-      //console.log(info.event._def.title);
       if (crud == 'edit') {
         editEvent(info.event._def.publicId);
-      }
-      else if (crud == 'delete') {
+      } else if (crud == 'delete') {
         deleteEvent(parseInt(info.event._def.publicId));
       }
-
-      // alert('Event: ' + info.event.title);
-      // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-      // alert('View: ' + info.view.type);
-
-      // // change the border color just for fun
-      // info.el.style.borderColor = 'red';
+    },
+    eventDidMount: function(info) {
+      if (info.event.extendedProps.description) {
+        tippy(info.el, {
+          content: info.event.extendedProps.description,
+          placement: 'top',
+          theme: 'light',
+        });
+      }
     }
   });
 
   calendar.render();
 }
+
 
 function fetchEvents() {
   $.ajax({
@@ -59,12 +58,12 @@ function fetchEvents() {
   });
 }
 function addEventFunc() {
-  
   var objs = {
     title: $("#eventName").val(),
     start: $("#fromDate").val(),
-    end: $("#fromDate").val(),//$("#toDate").val()
+    end: $("#fromDate").val(), //$("#toDate").val()
     type: $("#type").val(),
+    description: $("#description").val(),
     username: localStorage.username,
     password: localStorage.password
   };
@@ -76,7 +75,6 @@ function addEventFunc() {
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {
       if (JSON.parse(this.responseText).message == "Event inserted successfully") {
-        
         alert("Event inserted successfully");
         location.reload();
       } else if (JSON.parse(this.responseText).message == "Invalid admin credentials") {
@@ -221,28 +219,26 @@ function getEventById(id) {
   return originalEvents.find(ev => ev.id === id);
 }
 function editEvent(id) {
-  var eventsn=originalEvents.find(event => event.id === parseInt(id));
-  //console.log(eventsn);
+  var eventsn = originalEvents.find(event => event.id === parseInt(id));
   $("#eventName").val(eventsn.title);
   $("#fromDate").val(eventsn.start);
   $("#type").val(eventsn.type);
+  $("#description").val(eventsn.description); // Populate description field
   document.querySelector("#addEvent").innerHTML = "Update Event";
   document.querySelector("#addEvent").setAttribute("onclick", "updateEvent(" + id + ")");
-  
-
 }
 function removeEventById(id) {
   return events.filter(event => event.id !== id);
 }
 
 function updateEvent(id) {
-  
   var objs = {
     id: id,
     title: $("#eventName").val(),
     start: $("#fromDate").val(),
-    end: $("#fromDate").val(),//$("#toDate").val()
+    end: $("#fromDate").val(), //$("#toDate").val()
     type: $("#type").val(),
+    description: $("#description").val(), // Add description field
     username: localStorage.username,
     password: localStorage.password
   };
@@ -254,7 +250,6 @@ function updateEvent(id) {
       if (JSON.parse(this.responseText).message == "Event updated successfully") {
         alert("Event updated successfully");
         location.reload();
-
       } else if (JSON.parse(this.responseText).message == "Invalid admin credentials") {
         alert("Invalid admin credentials");
         localStorage.clear();
