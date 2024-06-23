@@ -5,6 +5,52 @@
   <link rel="shortcut icon" href="FE.png" />
   <title>Login</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      position: relative;
+    }
+
+    .page-header h1 {
+      color: #254aa5;
+    }
+
+    label {
+      color: #254aa5;
+    }
+
+    .form-control {
+      border-color: #254aa5;
+    }
+
+    .btn-primary {
+      background-color: #f68712;
+      border-color: #f25c19;
+    }
+
+    .btn-primary:hover {
+      background-color: #f25c19;
+      border-color: #f68712;
+    }
+
+    hr {
+      border-top: 2px solid #f68712;
+    }
+
+    /* Watermark CSS */
+    .watermark-background {
+      background: url('FE.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.1;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%; /* Adjust the size as needed */
+      height: 60%; /* Adjust the size as needed */
+      z-index: -1;
+    }
+  </style>
 </head>
 <body>
 <div class="container">
@@ -26,6 +72,9 @@
     <button onclick="Login()" type="button" class="btn btn-primary">Login</button>
   </form>
 </div>
+
+<!-- Watermark Background -->
+<div class="watermark-background"></div>
 
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js'></script>
