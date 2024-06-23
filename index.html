@@ -10,6 +10,68 @@
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
   
   <link rel='stylesheet' href='style.css'>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      position: relative;
+    }
+
+    .navbar {
+      background-color: #254aa5;
+      color: #ffffff;
+    }
+
+    .navbar-brand {
+      color: #ffffff;
+    }
+
+    .navbar-brand img {
+      filter: brightness(0) invert(1);
+    }
+
+    .page-header h1 {
+      color: #254aa5;
+    }
+
+    label {
+      color: #254aa5;
+    }
+
+    .form-control {
+      border-color: #254aa5;
+    }
+
+    .btn-primary {
+      background-color: #f68712;
+      border-color: #f25c19;
+    }
+
+    .btn-primary:hover {
+      background-color: #f25c19;
+      border-color: #f68712;
+    }
+
+    hr {
+      border-top: 2px solid #f68712;
+    }
+
+    #calendar {
+      margin-top: 20px;
+    }
+
+    /* Watermark CSS */
+    .watermark {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .watermark img {
+      max-width: 200px; /* Adjust the size as needed */
+    }
+  </style>
 </head>
 <body>
 <div class="container">
@@ -92,6 +154,11 @@
   </div>
 
  
+</div>
+
+<!-- Watermark -->
+<div class="watermark">
+  <img src="FE.png" alt="Watermark">
 </div>
 
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
