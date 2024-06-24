@@ -93,11 +93,11 @@ function addEventFunc() {
   xhr.send(objstr);
 }
 
-// Logout function
-// document.getElementById('logoutBtn').addEventListener('click', function () {
-//   localStorage.clear();
-//   window.location.href = 'events';
-// });
+//Logout function
+document.getElementById('logoutBtn').addEventListener('click', function () {
+  localStorage.clear();
+  window.location.href = 'events';
+});
 function getDistinctTypes() {
   const types = originalEvents.map(event => event.type);
   const distinctTypes = [...new Set(types)];
