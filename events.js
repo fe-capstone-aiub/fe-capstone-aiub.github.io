@@ -18,6 +18,15 @@ function ShowCalendar() {
       console.log(events);
       successCallback(events);
     },
+    eventDidMount: function(info) {
+      if (info.event.extendedProps.description) {
+        tippy(info.el, {
+          content: info.event.extendedProps.description,
+          placement: 'top',
+          theme: 'light',
+        });
+      }
+    }
   });
 
   calendar.render();
